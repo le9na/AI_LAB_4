@@ -12,18 +12,22 @@ class DFS:
 
     def setup_graph(self, size):
         self.G = [[False] * self.N for _ in range(self.N)]
-        self.G[0][1] = self.G[1][0] = True
-        self.G[0][8] = self.G[8][0] = True
-        self.G[0][4] = self.G[4][0] = True
-        self.G[1][2] = self.G[2][1] = True
-        self.G[1][3] = self.G[3][1] = True
-        self.G[2][6] = self.G[6][2] = True
-        #self.G[3][4] = self.G[4][3] = True
-        self.G[3][5] = self.G[5][3] = True
-        self.G[6][7] = self.G[7][6] = True
-        self.G[8][9] = self.G[9][8] = True
-        self.G[9][10] = self.G[10][9] = True
-        self.G[10][11] = self.G[11][10] = True
+        edges = [
+            (0, 1), 
+            (0, 8), 
+            (0, 4),
+            (1, 2), 
+            (1, 3),
+            (2, 6),
+            (3, 4), 
+            (3, 5),
+            (6, 7),
+            (8, 9),
+            (9, 10),
+            (10, 11)
+        ]
+        for u, v in edges:
+            self.G[u][v] = self.G[v][u] = True
 
     # Perform a DFS starting at node start
     def dfs(self, start, goal):
